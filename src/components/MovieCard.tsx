@@ -1,4 +1,5 @@
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Movie } from '../interfaces/movieInterface';
 
 
@@ -11,11 +12,24 @@ interface Props {
 
 export const MovieCard = ({ movie, height = 420, width = 300 }: Props) => {
 
+    const navigation = useNavigation();
+
     const imageUri = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
-
     return (
-        <View style={{ width, height, marginHorizontal: 8 }}>
+        <TouchableOpacity 
+            activeOpacity={0.8}
+            style={{ 
+                width, 
+                height, 
+                marginHorizontal: 2,
+                paddingBottom: 20,
+                paddingHorizontal: 7 
+            }}
+            onPress={() => navigation.dispatch(
+                CommonActions.navigate('DetailScreen', movie)
+            )}
+        >
 
             <View style={styles.imageContainer}>
                 <Image
@@ -26,7 +40,7 @@ export const MovieCard = ({ movie, height = 420, width = 300 }: Props) => {
                 />
             </View>
 
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -12,7 +12,7 @@ export const HomeScreen = () => {
 
     const { top } = useSafeAreaInsets();
 
-    const { nowPlaying, isLoading, popular, toprated, upcoming } = useMovies();
+    const { nowPlaying, isLoading, popular, topRated, upcoming } = useMovies();
 
     if (isLoading) {
         return (
@@ -40,7 +40,7 @@ export const HomeScreen = () => {
                 {/* Peliculas populares */}
                 
                 <HorizontalSlider movies={popular} title="Populares"/>
-                <HorizontalSlider movies={toprated} title="Top Rated"/>
+                <HorizontalSlider movies={topRated} title="Top Rated"/>
                 <HorizontalSlider movies={upcoming} title="Upcoming"/>
 
             </View>
